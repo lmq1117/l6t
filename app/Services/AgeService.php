@@ -23,6 +23,6 @@ class AgeService implements AgeHandler
             $s = "女";
             $age = 18;
         }
-        return "==".$s."==".$age."=====";
+        return "==" . $s . "==" . $age . "=====";
     }
 }
