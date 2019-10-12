@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Interfaces\AgeHandler;
+use Illuminate\Support\Facades\Redis;
 
 class UserController extends Controller
 {
@@ -11,5 +12,17 @@ class UserController extends Controller
     {
         //dd(app());
         return $age->saySelfAge();
+    }
+
+    public function redisSet($key,$value){
+        if(Redis::set($key,$value)){
+            return "set--- key:".$key."---value:".$value;
+        } else {
+            return "啥也没干";
+        }
+    }
+
+    public function redisGet($key){
+        return Redis::get($key);
     }
 }
