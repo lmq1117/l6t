@@ -16,6 +16,7 @@ class CrateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('author')->default('')->comment('文章作者');
+            $table->text('title');
             $table->text('content');
             $table->timestamps();
         });

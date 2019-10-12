@@ -19,3 +19,4 @@ Route::get('/', function () {
 Route::get('/age','UserController@test');
 Route::get('/redis/set/{key}/{value}','UserController@redisSet');
 Route::get('/redis/get/{key}','UserController@redisGet');
+Route::get('/queue','UserController@queue');

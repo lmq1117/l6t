@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\RandInsert;
 use Illuminate\Http\Request;
 use App\Interfaces\AgeHandler;
 use Illuminate\Support\Facades\Redis;
@@ -24,5 +25,9 @@ class UserController extends Controller
 
     public function redisGet($key){
         return Redis::get($key);
+    }
+
+    public function queue(){
+        RandInsert::dispatch();
     }
 }
