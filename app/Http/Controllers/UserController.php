@@ -28,6 +28,6 @@ class UserController extends Controller
     }
 
     public function queue(){
-        RandInsert::dispatch();
+        RandInsert::dispatch()->onConnection('l6t_queue')->onQueue('rand_insert');
     }
 }
