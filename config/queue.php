@@ -65,6 +65,13 @@ return [
             'retry_after' => 90,
             'block_for' => null,
         ],
+        'l6t_queue' => [
+            'driver' => 'redis',
+            'connection' => 'l6t_queue',
+            'queue' => env('REDIS_QUEUE', 'default'),
+            'retry_after' => 90,
+            'block_for' => null,
+        ],
 
     ],
 
