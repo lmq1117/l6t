@@ -28,7 +28,7 @@ class UserController extends Controller
     }
 
     public function queue(){
-        for($i = 0;$i < 5;$i++){
+        for($i = 0;$i < 5000;$i++){
             RandInsert::dispatch()->onConnection('l6t_queue')->onQueue('rand_insert');
         }
     }
