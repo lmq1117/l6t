@@ -32,4 +32,8 @@ class UserController extends Controller
             RandInsert::dispatch()->onConnection('l6t_queue')->onQueue('rand_insert');
         }
     }
+
+    public function pipeline(){
+        return debug_backtrace();
+    }
 }
