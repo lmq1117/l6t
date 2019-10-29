@@ -40,7 +40,10 @@ class UserController extends Controller
 
     public function page(Request $request){
         //$articles = Article::simplePaginate($request->get("page",15));
-        $articles = Article::where('id','>','6000000')->limit(15)->get();
+        //$articles = Article::where('id','>','6000000')->limit(15)->get();
+        $page = $request->get('page',1);
+        $size = $request->get('size',15);
+        $articles = Article::whereRaw("id > (select max(id) from articles) - {$page}*")->orderBy('id','desc')->limit($size)->get();
         return $articles;
     }
 
