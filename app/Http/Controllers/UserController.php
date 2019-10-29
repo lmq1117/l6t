@@ -39,7 +39,8 @@ class UserController extends Controller
     }
 
     public function page(Request $request){
-        $articles = Article::simplePaginate($request->get("page",15));
+        //$articles = Article::simplePaginate($request->get("page",15));
+        $articles = Article::where('id','>','6000000')->limit(15)->get();
         return $articles;
     }
 
