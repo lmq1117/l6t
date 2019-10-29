@@ -39,7 +39,7 @@ class UserController extends Controller
     }
 
     public function page(Request $request){
-        $articles = Article::paginate($request->get("page",15));
+        $articles = Article::simplePaginate($request->get("page",15));
         return $articles;
     }
 
