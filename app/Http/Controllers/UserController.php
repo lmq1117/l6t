@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use App\Jobs\RandInsert;
 use Illuminate\Http\Request;
 use App\Interfaces\AgeHandler;
@@ -36,4 +37,9 @@ class UserController extends Controller
     public function pipeline(){
         return debug_backtrace();
     }
+
+    public function page(Request $request){
+        $articles = Article::paginate($request->get("page",15));
+    }
+
 }
