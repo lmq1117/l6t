@@ -48,7 +48,7 @@ class UserController extends Controller
         //$articles = Article::where('id','>','6000000')->limit(15)->get();
         $page = $request->get('page', 1);
         $size = $request->get('size', 2);
-        $articles = Article::whereRaw("id <= (select max(id) from articles) - " . $page * $size)->limit($size)->orderBy('id','desc')->get();
+        $articles = Article::whereRaw("id <= (select max(id) from articles) - " . max($page - 1, 0) * $size)->limit($size)->orderBy('id', 'desc')->get();
         return view('article.list', ['articles' => $articles]);
         //return $articles;
     }
@@ -59,7 +59,7 @@ class UserController extends Controller
         //$articles = Article::where('id','>','6000000')->limit(15)->get();
         $page = $request->get('page', 1);
         $size = $request->get('size', 2);
-        $articles = Article::orderBy('id', 'desc')->offset(($page - 1) * $size)->limit($size)->orderBy('id','desc')->get();
+        $articles = Article::orderBy('id', 'desc')->offset(($page - 1) * $size)->limit($size)->orderBy('id', 'desc')->get();
         return view('article.list', ['articles' => $articles]);
         //return $articles;
     }
