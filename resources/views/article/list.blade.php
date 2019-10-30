@@ -11,7 +11,7 @@
 <ul>
     <li>TITLE|CONTENT</li>
     @foreach($articles as $article)
-        <li>$article->title|$article->content</li>
+        <li>{{$article->title}}|{{$article->content}}</li>
     @endforeach
 </ul>
 
