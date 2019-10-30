@@ -22,3 +22,4 @@ Route::get('/redis/get/{key}','UserController@redisGet');
 Route::get('/queue','UserController@queue');
 Route::get('/app/pipeline','UserController@pipeline');
 Route::get('/user/page','UserController@page');
+Route::get('/user/po','UserController@po');

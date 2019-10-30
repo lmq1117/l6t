@@ -53,4 +53,15 @@ class UserController extends Controller
         //return $articles;
     }
 
+    public function po(Request $request)
+    {
+        //$articles = Article::simplePaginate($request->get("page",15));
+        //$articles = Article::where('id','>','6000000')->limit(15)->get();
+        $page = $request->get('page', 1);
+        $size = $request->get('size', 2);
+        $articles = Article::orderBy('id', 'desc')->offset(($page - 1) * $size)->limit($size)->get();
+        return view('article.list', ['articles' => $articles]);
+        //return $articles;
+    }
+
 }
