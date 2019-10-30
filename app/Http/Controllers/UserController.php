@@ -49,7 +49,8 @@ class UserController extends Controller
         $page = $request->get('page', 1);
         $size = $request->get('size', 2);
         $articles = Article::whereRaw("id > (select max(id) from articles) - " . $page * $size)->orderBy('id', 'desc')->limit($size)->get();
-        return $articles;
+        return view('article.list', ['articles' => $articles]);
+        //return $articles;
     }
 
 }
