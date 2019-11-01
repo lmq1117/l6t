@@ -51,7 +51,7 @@ class UserController extends Controller
         $save = 50100000;
         $add = Article::selectRaw('count(id) as addNum')->where('id','>',$save)->first()->addNum ?? 0;
         $total = $save + $add;
-        d($save);
+        dump($save);
         dd($add);
         $articles = Article::whereRaw("id <= (select max(id) from articles) - " . max($page - 1, 0) * $size)->limit($size)->orderBy('id', 'desc')->get();
         return view('article.list', ['articles' => $articles]);
