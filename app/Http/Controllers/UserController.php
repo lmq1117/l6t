@@ -49,7 +49,7 @@ class UserController extends Controller
         $page = $request->get('page', 1);
         $size = $request->get('size', 2);
         $save = 50100000;
-        $add = Article::selectRaw('count(id) as add')->where('id','>',$save)->first()->add ?? 0;
+        $add = Article::selectRaw('count(id) as addNum')->where('id','>',$save)->first()->addNum ?? 0;
         $total = $save + $add;
         d($save);
         dd($add);
