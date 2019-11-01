@@ -48,6 +48,11 @@ class UserController extends Controller
         //$articles = Article::where('id','>','6000000')->limit(15)->get();
         $page = $request->get('page', 1);
         $size = $request->get('size', 2);
+        $save = 50100000;
+        $add = Article::selectRaw('count(id) as add')->where('id','>',$save)->first()->add ?? 0;
+        $total = $save + $add;
+        d($save);
+        dd($add);
         $articles = Article::whereRaw("id <= (select max(id) from articles) - " . max($page - 1, 0) * $size)->limit($size)->orderBy('id', 'desc')->get();
         return view('article.list', ['articles' => $articles]);
         //return $articles;
